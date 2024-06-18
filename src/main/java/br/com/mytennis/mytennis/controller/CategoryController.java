@@ -4,6 +4,7 @@ import br.com.mytennis.mytennis.dto.CategoryDTO;
 import br.com.mytennis.mytennis.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
@@ -18,8 +19,10 @@ public class CategoryController {
 
     @Autowired
     private CategoryService service;
+
     @PostMapping
     public CategoryDTO create(@RequestBody CategoryDTO dto){ return service.create(dto);}
+
     @GetMapping("/{id}")
     public CategoryDTO findById(@PathVariable("id")int id){
         CategoryDTO dto=service.findById(id);
@@ -40,8 +43,11 @@ public class CategoryController {
         return categories;
     }
 
-    @PutMapping
-    public CategoryDTO update(@RequestBody CategoryDTO dto){ return service.update(dto);}
+    @PutMapping("/{id}")
+    public CategoryDTO update(@PathVariable("id") int id, @RequestBody CategoryDTO dto){
+        dto.setId(id);
+        return service.update(dto);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> delete(@PathVariable("id")int id){

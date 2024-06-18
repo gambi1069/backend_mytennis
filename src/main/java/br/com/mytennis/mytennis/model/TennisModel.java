@@ -30,8 +30,8 @@ public class TennisModel {
     @Column(nullable = false)
     private int number;
 
-    @JoinColumn(name="category_id", nullable = false)
     @ManyToOne
+    @JoinColumn(name="category_id", nullable = false)
     private CategoryModel category;
 
 }

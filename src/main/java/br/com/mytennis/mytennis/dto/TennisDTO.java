@@ -4,12 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.hateoas.RepresentationModel;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-public class TennisDTO {
+public class TennisDTO  extends RepresentationModel<TennisDTO> {
 
     private int id;
 
@@ -21,6 +22,6 @@ public class TennisDTO {
 
     private int number;
 
-    private CategoryDTO category;
+    private Integer categoryId;
 
 }

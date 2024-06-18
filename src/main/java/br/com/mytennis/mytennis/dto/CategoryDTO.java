@@ -16,6 +16,6 @@ public class CategoryDTO extends RepresentationModel<CategoryDTO> {
     private String name;
     private String description;
 
-    public String getFullCategory(){return this.name + "-"+ this.description;}
+//    public String getFullCategory(){return this.name + "-"+ this.description;}
 
 }
